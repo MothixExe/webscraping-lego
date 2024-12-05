@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'CeraPro';
+    src: url('../font/CeraPro-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    font-family: 'CeraPro', sans-serif;
+}
+
+h2 {
+    font-family: 'CeraPro', sans-serif !important;
+    font-size: 2rem !important;
+    font-weight: bold !important;
+    line-height: 1.5 !important;
+    margin: 0;
+    text-align: center;
+}

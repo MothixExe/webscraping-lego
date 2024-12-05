@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="fr">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/style.js"></script>
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <title id="titre_page">Projet LEGO</title>
+    <style>
+        .content-auto {
+            content-visibility: auto;
+        }
+    </style>
+    <link rel="stylesheet" href="./css/font.css">
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-gray-100 bg-gray-900 text-white">
+
+    <nav class="bg-gray-800">
+        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+            <div class="relative flex h-16 items-center justify-between">
+                <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                    <!-- Mobile menu button-->
+                    <button id="mobile-menu-button" type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                    <div class="flex shrink-0 items-center">
+                        <a href="./index.html">
+                            <img class="h-8 w-auto" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/LEGO_logo.svg/512px-LEGO_logo.svg.png" alt="LogoLodo">
+                        </a>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:block">
+                        <div class="flex space-x-4">
+                            <a href="./index.html" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Home</a>
+                            <a href="./theme.html" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white" >Thèmes</a>
+                            <a href="./allsets.html" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Sets Lego</a>
+                            <a href="./info.html" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Informations</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="sm:hidden" id="mobile-menu">
+            <div class="space-y-1 px-2 pb-3 pt-2">
+                <a href="./index.html" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Home</a>
+                <a href="./theme.html" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Thèmes</a>
+                <a href="./allsets.html" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white" aria-current="page">Sets Lego</a>
+                <a href="./info.html" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Informations</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!--  -->
+    <script src="./js/menu.js"></script>
+
+    <div id="content-set" class="container mx-auto p-6">
+        <!-- Header Section -->
+        <header id="header-section" class="bg-blue-600 text-white p-4 rounded-lg shadow-md text-center">
+            <h1 id="header-title" class="text-3xl font-bold">Chargement...</h1>
+            <a href="#" id="header-subtitle" class="text-white hover:underline mt-2 text-lg inline-block">Chargement...</a>
+        </header>
+        <!-- Main Content -->
+        <div id="main-content" class="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+            
+            <!-- Image Section -->
+            <div id="image-section" class="bg-gray-800 rounded-lg shadow-lg overflow-hidden w-full h-full">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 w-full h-full">
+                    <div class="grid gap-4">
+                        <div class="w-full h-full">
+                            <img class="object-cover w-full h-full rounded-lg" src="https://via.placeholder.com/150" alt="">
+                        </div>
+                        <div class="w-full h-full">
+                            <img class="object-cover w-full h-full rounded-lg" src="https://via.placeholder.com/150" alt="">
+                        </div>
+                        <div class="w-full h-full">
+                            <img class="object-cover w-full h-full rounded-lg" src="https://via.placeholder.com/150" alt="">
+                        </div>
+                    </div>
+                    <div class="grid gap-4">
+                        <div class="w-full h-full">
+                            <img class="object-cover w-full h-full rounded-lg" src="https://via.placeholder.com/150" alt="">
+                        </div>
+                        <div class="w-full h-full">
+                            <img class="object-cover w-full h-full rounded-lg" src="https://via.placeholder.com/150" alt="">
+                        </div>
+                        <div class="w-full h-full">
+                            <img class="object-cover w-full h-full rounded-lg" src="https://via.placeholder.com/150" alt="">
+                        </div>
+                    </div>
+                    <div class="grid gap-4">
+                        <div class="w-full h-full">
+                            <img class="object-cover w-full h-full rounded-lg" src="https://via.placeholder.com/150" alt="">
+                        </div>
+                        <div class="w-full h-full">
+                            <img class="object-cover w-full h-full rounded-lg" src="https://via.placeholder.com/150" alt="">
+                        </div>
+                        <div class="w-full h-full">
+                            <img class="object-cover w-full h-full rounded-lg" src="https://via.placeholder.com/150" alt="">
+                        </div>
+                    </div>
+                    <div class="grid gap-4">
+                        <div class="w-full h-full">
+                            <img class="object-cover w-full h-full rounded-lg" src="https://via.placeholder.com/150" alt="">
+                        </div>
+                        <div class="w-full h-full">
+                            <img class="object-cover w-full h-full rounded-lg" src="https://via.placeholder.com/150" alt="">
+                        </div>
+                        <div class="w-full h-full">
+                            <img class="object-cover w-full h-full rounded-lg" src="https://via.placeholder.com/150" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Details Section -->
+            <div id="details-section" class="bg-gray-800 rounded-lg shadow-lg p-6">
+                <h2 id="details-title" class="text-2xl font-bold text-white">Détails</h2>
+                <p id="details-description" class="mt-4 text-gray-400">
+                    Chargement...
+                </p>
+    
+                <h3 id="features-title" class="mt-6 text-xl font-semibold text-gray-200">Caractéristiques</h3>
+                <table class="min-w-full divide-y divide-gray-700 mt-4" id="features-list">
+                    <tbody class="bg-gray-800 divide-y divide-gray-700 light:bg-gray-800">
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">Nombre</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">Chargement...</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">Pièces</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">Chargement...</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">Minifigs</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">Chargement...</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">Prix</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">Chargement...</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">Évaluation</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">Chargement...</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">Dimensions</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">Chargement...</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-white">Poids</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-400">Chargement...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    
+        <!-- Call-to-Action Section -->
+        <div id="cta-section" class="mt-8 bg-gray-700 dark:bg-gray-700 rounded-lg p-6 shadow-md text-center">
+            <h3 id="cta-title" class="text-xl font-bold text-white dark:text-white">Acheter maintenant</h3>
+            <p id="cta-description" class="mt-2 text-gray-300 dark:text-gray-300">
+                Ne manquez pas cette offre incroyable!
+            </p>
+            <a id="cta-button" 
+               href="#" 
+               class="mt-4 inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg shadow-lg transition duration-300 transform hover:-translate-y-1 hover:scale-105">
+                Acheter
+            </a>
+        </div>
+    </div>
+    
+    <script src="./js/callAPI.js"></script>
+    <script src="./js/displaySOAT.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+
+
+</body>
+
+</html>

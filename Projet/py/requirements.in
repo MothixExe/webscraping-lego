@@ -1,0 +1,4 @@
+brickse==0.2.0
+Flask==3.1.0
+Flask_Cors==5.0.0
+rapidfuzz==3.10.1

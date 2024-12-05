@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="fr">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/style.js"></script>
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <title id="titre_page">Projet LEGO</title>
+    <style>
+        .content-auto {
+            content-visibility: auto;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-gray-900 text-white flex flex-col justify-between min-h-screen">
+
+    <nav class="bg-gray-800">
+        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+            <div class="relative flex h-16 items-center justify-between">
+                <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                    <!-- Mobile menu button-->
+                    <button id="mobile-menu-button" type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                    <div class="flex shrink-0 items-center">
+                        <a href="./index.html">
+                            <img class="h-8 w-auto" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/LEGO_logo.svg/512px-LEGO_logo.svg.png" alt="LogoLodo">
+                        </a>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:block">
+                        <div class="flex space-x-4">
+                            <a href="./index.html" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Home</a>
+                            <a href="./theme.html" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Thèmes</a>
+                            <a href="./allsets.html" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Sets Lego</a>
+                            <a href="./info.html" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Informations</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sm:hidden" id="mobile-menu">
+            <div class="space-y-1 px-2 pb-3 pt-2">
+                <a href="./index.html" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Home</a>
+                <a href="./theme.html" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Thèmes</a>
+                <a href="./allsets.html" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white" aria-current="page">Sets Lego</a>
+                <a href="./info.html" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Informations</a>
+            </div>
+        </div>
+    </nav>
+
+    <div id="article-container" class="container mx-auto flex-grow">
+        <!-- Introduction Section -->
+        <section id="intro-section" class="bg-gray-800 rounded-lg shadow-lg p-6 mt-6 mx-auto max-w-4xl text-center">
+            <h2 class="text-2xl font-bold text-white">Projet SAÉ 3.VCOD.01 : Collecte automatisée de données web</h2>            
+            <p class="mt-4 text-gray-400">
+                Dans le cadre du projet <strong>SAÉ 3.VCOD.01</strong>, intitulé "Collecte automatisée de données web", j'ai développé un site web sur le thème de Lego en utilisant l'API Brikse, permettant de collecter des informations sur les sets Lego disponibles. Ce site web a été créé en combinant un serveur <strong>Flask</strong> en Python et du <strong>JavaScript</strong> pour interagir avec l'API et afficher les données de manière dynamique.
+            </p>
+            
+            <p class="mt-4 text-gray-400">
+                Le serveur Flask joue un rôle crucial en gérant les requêtes et en facilitant la communication avec l'API Brikse, tandis que le JavaScript s'occupe de l'affichage interactif des données sur le front-end, offrant ainsi une interface utilisateur fluide et réactive.
+            </p>
+            
+            <p class="mt-4 text-gray-400">
+                Le site permet aux utilisateurs de rechercher et de filtrer des sets Lego selon différents critères tels que le nom, la date du set, ou encore le thème. Il offre une grande variété de thèmes Lego, parmi lesquels on retrouve des univers comme <strong>Star Wars</strong>, <strong>Harry Potter</strong>, <strong>Technic</strong>, <strong>Architecture</strong>, <strong>City</strong>, et bien d'autres. Actuellement, la base de données contient <strong id="lego-sets">6 000 sets Lego</strong>, offrant ainsi une large sélection d'options pour les passionnés et les collectionneurs de Lego. Cette base de données est mise à jour à chaque fois que l'utilisateur visite un nouveau thème.
+            </p>
+            
+            <p class="mt-4 text-gray-400">
+                L'intégration du JavaScript avec Flask permet d'afficher les informations récupérées en temps réel et de proposer une navigation fluide entre les différentes sections du site. Grâce à cette approche, le projet démontre l'utilisation d'outils modernes pour collecter et afficher des données web de manière interactive, tout en mettant en avant l'importance de l'automatisation de la collecte d'informations dans le développement web.
+            </p>
+        </section>
+    </div>
+    <section id="stats-section" class="bg-gray-800 rounded-lg shadow-lg p-6 mt-6 mx-auto max-w-4xl">
+        <h2 class="text-2xl font-bold text-white text-center">Statistiques de la Base de Données</h2>
+        <div class="overflow-x-auto mt-4 text-center">
+            <table class="min-w-full bg-gray-900 text-white">
+                <thead>
+                    <tr>
+                        <th class="py-2 px-4 border-b border-gray-700">Critère</th>
+                        <th class="py-2 px-4 border-b border-gray-700">Valeur</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="py-2 px-4 border-b border-gray-700">Nombre total de sets</td>
+                        <td class="py-2 px-4 border-b border-gray-700" id="total-sets">0</td>
+                    </tr>
+                    <tr>
+                        <td class="py-2 px-4 border-b border-gray-700">Nombre de thèmes</td>
+                        <td class="py-2 px-4 border-b border-gray-700" id="total-themes">0</td>
+                    </tr>
+                    <tr>
+                        <td class="py-2 px-4 border-b border-gray-700">Année la plus ancienne</td>
+                        <td class="py-2 px-4 border-b border-gray-700" id="oldest-year">0</td>
+                    </tr>
+                    <tr>
+                        <td class="py-2 px-4 border-b border-gray-700">Année la plus récente</td>
+                        <td class="py-2 px-4 border-b border-gray-700" id="newest-year">0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="flex flex-col items-center mt-4">
+            <a href="./py/data/sets.json" download="sets.json" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 mb-2">Télécharger la Base de Données des sets</a>
+            <a href="./py/data/themes.json" download="themes.json" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700">Télécharger la Base de Données des thèmes</a>
+        </div>
+
+    </section>
+    <section id="credits-section" class="bg-gray-800 rounded-lg shadow-lg p-6 mt-6 mx-auto max-w-4xl">
+        <h2 class="text-2xl font-bold text-white text-center">Crédits</h2>
+        <p class="mt-4 text-gray-400">
+            Ce projet a été réalisé par <strong>Adrien Arthaud</strong> dans le cadre du cours de <strong>Visualisation et Collecte de Données</strong> dispensé par <strong>M. Brassel</strong> à l'Institue Universitaire de Technologie 2 de Grenoble. Le site web a été développé en utilisant les technologies suivantes :
+        </p>
+        <ul class="mt-4 text-gray-400 list-disc list-inside">
+            <li><a href="https://flask.palletsprojects.com/" target="_blank" class="text-blue-500 hover:underline">Flask</a> : Framework web en Python</li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" class="text-blue-500 hover:underline">JavaScript</a> : Langage de programmation pour le front-end</li>
+            <li><a href="https://brickset.com/api/v3.asmx" target="_blank" class="text-blue-500 hover:underline">API Brikse</a> : API pour collecter des données sur les sets Lego</li>
+            <li><a href="https://tailwindcss.com/" target="_blank" class="text-blue-500 hover:underline">Tailwind CSS</a> : Framework CSS pour le design du site</li>
+        </ul>
+    </section>
+    
+
+    <footer class="text-center py-4">
+        <p class="text-gray-400">Made with ❤️ by Adrien et Matis</p>
+    </footer>
+
+    <script src="js/callAPI.js"></script>
+    <script src="js/displayDBInfo.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="fr">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/style.js"></script>
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <title>Projet LEGO - Introduction</title>
+    <style>
+        .content-auto {
+            content-visibility: auto;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-gray-900 text-white flex flex-col justify-between min-h-screen">
+
+    <nav class="bg-gray-800">
+        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+            <div class="relative flex h-16 items-center justify-between">
+                <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                    <!-- Mobile menu button-->
+                    <button id="mobile-menu-button" type="button" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+                    <div class="flex shrink-0 items-center">
+                        <a href="./index.html">
+                            <img class="h-8 w-auto" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/LEGO_logo.svg/512px-LEGO_logo.svg.png" alt="LogoLodo">
+                        </a>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:block">
+                        <div class="flex space-x-4">
+                            <a href="./index.html" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Home</a>
+                            <a href="./theme.html" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Thèmes</a>
+                            <a href="./allsets.html" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Sets Lego</a>
+                            <a href="./info.html" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Informations</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <nav>
+        <div class="sm:hidden" id="mobile-menu">
+            <div class="space-y-1 px-2 pb-3 pt-2">
+                <a href="./index.html" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Home</a>
+                <a href="./theme.html" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Thèmes</a>
+                <a href="./allsets.html" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white" aria-current="page">Sets Lego</a>
+                <a href="./info.html" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Informations</a>
+            </div>
+        </div>
+    </nav>
+
+    <div id="article-container" class="container mx-auto p-6 flex-grow">
+        <!-- Introduction Section -->
+        <div id="intro-section" class="bg-gray-800 rounded-lg shadow-lg p-6 mt-6">
+            <h2 class="text-2xl font-bold text-white">Bienvenue sur le Projet LEGO</h2>
+            <p id="intro-description" class="mt-4 text-gray-400">
+                Ce projet a été créé par Adrien Arthaud pour collecter automatiquement des données sur les sets LEGO. Explorez les différentes sections pour en savoir plus sur les thèmes, les sets et les crédits du projet.
+            </p>
+        </div>
+        <!-- Features Section -->
+        <div class="flex flex-col lg:flex-row gap-6 mt-6">
+            <section id="features-section" class="lg:w-1/2 bg-gray-800 rounded-lg shadow-lg p-6">
+                <h2 class="text-2xl font-bold text-white">Fonctionnalités</h2>
+                <div class="flex flex-col lg:flex-row gap-6">
+                    <ul id="features-list" class="mt-4 text-gray-400 list-disc list-inside space-y-2 lg:w-1/2">
+                        <li class="hover:text-white transition duration-300">
+                            Collecte automatique des données des sets LEGO
+                        </li>
+                        <li class="hover:text-white transition duration-300">
+                            <a href="./theme.html">Affichage des thèmes LEGO disponibles</a>
+                        </li>
+                        <li class="hover:text-white transition duration-300">
+                            <a href="./theme.html">Recherche et filtrage des sets LEGO</a>
+                        </li>
+                        <li class="hover:text-white transition duration-300">
+                            <a href="./allsets.html">Affichage des détails de chaque set LEGO</a>
+                        </li>
+                    </ul>
+                    <img src="https://www.lego.com/cdn/cs/set/assets/blt13f0aa3c7c7c5c73/Sophia_StandingWithPhone_V7_Shadowless_lowres.png" alt="LEGO Features" class="w-4/5 h-auto lg:w-2/5">
+                    </div>
+                <section id="new-section" class="mt-6 bg-gray-700 rounded-lg shadow-lg p-6">
+                    <h2 class="text-2xl font-bold text-white">L'objectif</h2>
+                    <p id="new-description" class="mt-4 text-gray-400">
+                        Le but étant ici de créer un site web qui permet de visualiser les sets LEGO et d'en savoir plus sur eux. Le site web est créé avec Tailwind CSS et utilise l'API Brikse pour récupérer les données des sets LEGO.
+                        Des requêtes sont envoyées par javascript au serveur flask python qui lui-même envoie des requêtes à l'API Brikse pour récupérer les données des sets LEGO.
+                    </p>
+                </section>
+            </section>
+            <div id="image-section" class="lg:w-1/2 rounded-lg">
+                <img src="assets/index_background.jpg" alt="LEGO Logo" class="w-full h-full rounded-lg">
+            </div>
+        </div>
+        <div id="attention-section" class="mt-6 bg-gray-800 rounded-lg shadow-lg p-6 mx-auto w-fit">
+            <p class="text-gray-500 text-center">
+                Attention, si vous lancez le serveur pour la première fois, il se peut que la base de données de sets soit vide, c'est normal. <br>Parcourez les différents thèmes afin de remplir la base de données au fur et à mesure (ceci évite une énorme phase d'appel sur l'API).
+            </p>
+        </div>
+    </div>
+
+    <script src="js/callAPI.js"></script>
+
+</body>
+
+</html>
