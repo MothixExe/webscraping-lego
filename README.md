@@ -50,6 +50,21 @@ Ce projet permet de collecter des données sur les ensembles Lego en utilisant l
 - `sets.html` : Page affichant les détails des sets d'un thème spécifique.
 - `soat.html` : Page affichant les détails d'un set Lego spécifique. (Sets Of All Time ^^ )
 
+
+### Fichiers JavaScript
+- `js/style.js` : Contient des fonctions et des classes pour manipuler et afficher les données des ensembles Lego.
+- `js/researchTheme.js` : Gère la recherche de thèmes Lego en fonction des critères de l'utilisateur.
+- `js/displayThemes.js` : Affiche les thèmes Lego sur la page en fonction des critères de recherche.
+- `js/displayDBInfo.js` : Affiche les informations de la base de données sur la page d'information.
+- `js/researchSets.js` : Gère la recherche de sets Lego en fonction des critères de l'utilisateur.
+- `js/loadingAnim.js` : Gère l'animation de chargement.
+- `js/displaySOAT.js` : Affiche les détails d'un set Lego spécifique sur la page SOAT (Sets Of All Time).
+- `js/displaySets.js` : Affiche les sets Lego sur la page en fonction des critères de recherche.
+- `js/timeSlider.js` : Gère les sliders de sélection de période pour la recherche de thèmes.
+- `js/callAPI.js` : Contient les fonctions pour interagir avec l'API et récupérer les données.
+- `js/menu.js` : Gère le menu mobile de l'interface web.
+- `js/displaySetsByTheme.js` : Affiche les sets Lego filtrés par thème sur la page.
+
 ## Instructions pour faire fonctionner le programme
 
 ### Prérequis

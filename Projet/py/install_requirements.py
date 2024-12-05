@@ -30,9 +30,8 @@ def main():
     """
     Installer les modules requis
     """
-    if os.getcwd().split('\\')[-1] != 'py':
-        os.chdir(os.getcwd() + '/py')
-    with open('requirements.in', 'r', encoding='utf-8') as fichier:
+    path = os.path.join(os.path.dirname(__file__), 'requirements.in')
+    with open(path, 'r', encoding='utf-8') as fichier:
         modules_requis = fichier.read().split('\n')
     modules_requis = [module.split("==")[0] for module in modules_requis if module]
     install_missing_modules(modules_requis)

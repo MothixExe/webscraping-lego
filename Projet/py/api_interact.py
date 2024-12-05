@@ -5,6 +5,7 @@ requêtes du serveur d'applications Flask.
 
 Fait par Mothix et Matis
 """
+import os
 import json
 import random
 import datetime
@@ -45,9 +46,12 @@ def get_db_info() -> dict:
     - dict: Informations sur la base de données (nombre de sets et de thèmes).
     """
     path = 'data/sets.json'
+    path = os.path.join(os.path.dirname(__file__), path)
+
     sets = utils.load_sets_from_file(path)
 
     path = 'data/themes.json'
+    path = os.path.join(os.path.dirname(__file__), path)
     themes = utils.load_themes_from_file(path)
 
     fromyear = min(theme['yearFrom'] for theme in themes)
@@ -135,11 +139,9 @@ def get_themes_name(yearfrom: int = None, yearto: int = None, search: str = None
     - list[dict]: Liste des thèmes avec l'image d'un set aléatoire.
     """
     # Charger les données
-    with open('data/themes.json', 'r', encoding='utf-8') as themes_file:
-        themes = json.load(themes_file)
+    themes = utils.load_themes_from_file(os.path.join(os.path.dirname(__file__), 'data/themes.json'))
 
-    with open('data/sets.json', 'r', encoding='utf-8') as sets_file:
-        sets = json.load(sets_file)
+    sets = utils.load_sets_from_file(os.path.join(os.path.dirname(__file__), 'data/sets.json'))
 
     # Définir les bornes par défaut
     yearfrom = yearfrom or 1949

@@ -17,9 +17,7 @@ if __name__ == '__main__':
     data.main()
 
     # Ouvrir le navigateur sur la page d'accueil
-    if os.getcwd().split('\\')[-1] != 'py':
-        os.chdir(os.getcwd() + '/py')
-    path = os.path.join(os.path.dirname(os.getcwd()), 'index.html')
+    path = os.path.join(os.path.dirname(__file__), '../index.html')
     webbrowser.open(path)
 
     # Démarrer le serveur Flask
