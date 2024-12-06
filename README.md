@@ -70,12 +70,4 @@ Ce projet permet de collecter des données sur les ensembles Lego en utilisant l
 ### Prérequis
 - Python 3.x
 - Flask
-- Tailwind CSS
-- Node.js et npm (pour installer les dépendances JavaScript)
-
-### Installation
-
-1. Clonez le dépôt :
-   ```bash
-   git clone <URL_DU_DEPOT>
-   cd <NOM_DU_DEPOT>
+- Une connexion internet si vous n'avez jamais lancer le programme

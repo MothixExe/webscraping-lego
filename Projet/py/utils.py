@@ -10,7 +10,9 @@ Fonctions:
 - load_sets_from_file(file_path: str) -> list[dict]:
     Charge les sets depuis un fichier JSON local.
 """
+import os
 import json
+import requests
 
 
 def save_sets_to_file(sets: list[dict], file_path: str):
@@ -21,7 +23,9 @@ def save_sets_to_file(sets: list[dict], file_path: str):
     - sets: list[dict] - Les sets à enregistrer.
     - file_path: str - Le chemin du fichier JSON.
     """
-    with open(file_path, 'w', encoding='utf-8') as file:
+    path_script = os.path.dirname(__file__)
+    path_data = os.path.join(path_script, file_path)
+    with open(path_data, 'w', encoding='utf-8') as file:
         json.dump(sets, file, ensure_ascii=False, indent=4)
 
 
@@ -36,7 +40,9 @@ def load_sets_from_file(file_path: str) -> list[dict]:
     - list[dict]: Les sets chargés depuis le fichier JSON.
     """
     try:
-        with open(file_path, 'r', encoding='utf-8') as file:
+        path_script = os.path.dirname(__file__)
+        path_data = os.path.join(path_script, file_path)
+        with open(path_data, 'r', encoding='utf-8') as file:
             return json.load(file)
     except FileNotFoundError:
         return []
@@ -57,3 +63,29 @@ def load_themes_from_file(file_path: str) -> list[dict]:
             return json.load(file)
     except FileNotFoundError:
         return []
+
+
+def download_images_to_file(url: list[str], set_num: str) -> list[str]:
+    """
+    Télécharge une liste d'images depuis une URL et les enregistre dans un fichier.
+
+    Args:
+    - url: str - L'URL de l'image à télécharger.
+    - file_path: str - Le chemin du fichier dans lequel enregistrer l'image.
+
+    Returns:
+    - str: Le chemin de l'image enregistrée.
+    """
+    fichier = '../assets/sets/'
+    path = os.path.join(os.path.dirname(__file__), fichier, set_num)
+    if not os.path.exists(path):
+        os.makedirs(path)
+    for i in url:
+        file_path = os.path.join(path, i.split('/')[-1])
+        if not os.path.exists(file_path):
+            print(f'Téléchargement de l\'image {i.split("/")[-1]} ...')
+            response = requests.get(i, stream=True, timeout=50) # Télécharger l'image
+            with open(file_path, 'wb') as file:
+                file.write(response.content)
+
+    return [f'{fichier[1:]}{set_num}/{i.split("/")[-1]}' for i in url]

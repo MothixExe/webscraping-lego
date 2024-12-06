@@ -19,8 +19,10 @@ import utils
 # API_KEY = '3-7B1M-6WHA-JxOTZ'  # Mothix
 API_KEY = '3-8MeG-xlFh-ZlQgO'  # Matis
 
-IMG_DEFAULT = \
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/LEGO_logo.svg/512px-LEGO_logo.svg.png"
+IMG_DEFAULT = "./assets/LEGO_logo.png"  # Image par défaut si aucune image n'est trouvée
+
+
+# ! FAIRE TELECHARGER CHAQUE IMAGE DES SETS ET LES METTRE DANS UN DOSSIER IMAGES
 
 
 ###########################################################
@@ -120,6 +122,7 @@ def recherche_complete(liste, requete, limite=5, score_min=60):
     correspondances_fuzzy = process.extract(
         requete, liste, scorer=fuzz.WRatio, limit=limite)
     return [match[0] for match in correspondances_fuzzy if match[1] >= score_min]
+
 
 ###########################################################
 # & Fonctions pour obtenir des informations sur les thèmes
@@ -296,8 +299,7 @@ def get_set_info(set_number: str) -> list[dict]:
     dimensions, lien Lego)
     """
     # Lit les données locales
-    with open('data/sets.json', 'r', encoding='utf-8') as sets_file:
-        sets = json.load(sets_file)
+    sets = utils.load_sets_from_file('data/sets.json')
 
     # Trouver le set correspondant
     set_info = next((s for s in sets if s['number'] == set_number), None)
@@ -324,6 +326,7 @@ def get_set_info(set_number: str) -> list[dict]:
             set_info['setID']).read())['additionalImages']
         for dict_img in list_dict_img:
             img.append(dict_img['imageURL'])
+        img = utils.download_images_to_file(img, set_number)
     else:
         img = [IMG_DEFAULT]
 
