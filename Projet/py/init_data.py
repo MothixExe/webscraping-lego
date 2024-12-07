@@ -12,7 +12,6 @@ import api_interact as api_utils
 
 FICHIER = './data/'
 
-
 def save_json_to_file(data, path_data):
     """
     Enregistrer les données dans un fichier
@@ -43,6 +42,11 @@ def init_themes(filename='themes'):
     path_file = os.path.join(path_script, FICHIER)
     path_data = os.path.join(path_file, filename)
 
+    # Vérifier si le fichier existe et si les thèmes sont déjà enregistrés
+    if os.path.exists(path_data) and json.loads(brickse.lego.get_themes().read()) != []:
+        print("Les thèmes sont déjà enregistrés.")
+        return
+
     themes = json.loads(brickse.lego.get_themes().read())['themes']
     save_json_to_file(themes, path_data)
 
@@ -72,12 +76,24 @@ def main():
     """
     Initialiser les données
     """
-    api_utils.init(api_utils.API_KEY)
+    for key_api in api_utils.API_KEY:
+        api_utils.init(key_api)
+        try:
+            # Inilialiser les thèmes
+            init_themes()
+            # Initialiser les ensembles sur une liste vide
+            init_sets()
+        except KeyError:
+            print("Nombre de requêtes dépassé, changement de clé API")
+            if key_api == api_utils.API_KEY[-1]:
+                print("Nombre de requêtes dépassé pour toutes les clés API")
+                return
 
-    # Inilialiser les thèmes
-    init_themes()
-    # Initialiser les ensembles sur une liste vide
-    init_sets()
+    choix = input("Faire fonctionner le site avec les images en local ? ([o]/n) : ")
+    while choix.lower() not in ['o', 'n', '']:
+        choix = input("Faire fonctionner le site avec les images en local ? ([o]/n) : ")
+    if choix.lower() in ['o', '']:
+        api_utils.DOWNLOAD_IMG = True
 
 
 if __name__ == '__main__':

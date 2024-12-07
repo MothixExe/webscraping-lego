@@ -25,7 +25,7 @@ async function displayFilteredSets() {
         titre_page.innerHTML = `Projet LEGO - Tricheur`;
     }
 
-    setsList.innerHTML = '<h1 class="col-span-4 text-center w-full text-3xl font-bold text-blue-500 mt-5" id="chargement">Chargement des Sets ...</h1>';
+    setsList.innerHTML = '<h1 class="col-span-4 text-center w-full text-3xl font-bold text-blue-500 mt-5" id="chargement">Chargement et téléchargement des Sets ...</h1>';
     const titre_chargement = document.getElementById('chargement');
 
     const setsByTheme = await getSetsByTheme();

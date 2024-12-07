@@ -74,18 +74,22 @@ def download_images_to_file(url: list[str], set_num: str) -> list[str]:
     - file_path: str - Le chemin du fichier dans lequel enregistrer l'image.
 
     Returns:
-    - str: Le chemin de l'image enregistrée.
+    - str: Le chemin relatif de l'image enregistrée.
     """
     fichier = '../assets/sets/'
     path = os.path.join(os.path.dirname(__file__), fichier, set_num)
+
+    # Créer le dossier s'il n'existe pas
     if not os.path.exists(path):
         os.makedirs(path)
-    for i in url:
-        file_path = os.path.join(path, i.split('/')[-1])
+
+    # Télécharger les images
+    for i, lien in enumerate(url):
+        file_path = os.path.join(path, lien.split('/')[-1])
         if not os.path.exists(file_path):
-            print(f'Téléchargement de l\'image {i.split("/")[-1]} ...')
-            response = requests.get(i, stream=True, timeout=50) # Télécharger l'image
+            print(f'Téléchargement de l\'image {lien.split("/")[-1]} - {set_num} ({i+1}/{len(url)})')
+            response = requests.get(lien, stream=True, timeout=50) # Télécharger l'image
             with open(file_path, 'wb') as file:
                 file.write(response.content)
 
-    return [f'{fichier[1:]}{set_num}/{i.split("/")[-1]}' for i in url]
+    return [f'{fichier[1:]}{set_num}/{lien.split("/")[-1]}' for lien in url]

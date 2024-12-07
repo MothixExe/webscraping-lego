@@ -16,13 +16,15 @@ import utils
 
 # Clé d'API pour accéder à Brickset
 # (limited to 100 requests per day)
+API_KEY = ['3-7B1M-6WHA-JxOTZ', '3-8MeG-xlFh-ZlQgO']
 # API_KEY = '3-7B1M-6WHA-JxOTZ'  # Mothix
-API_KEY = '3-8MeG-xlFh-ZlQgO'  # Matis
+# API_KEY = '3-8MeG-xlFh-ZlQgO'  # Matis
 
-IMG_DEFAULT = "./assets/LEGO_logo.png"  # Image par défaut si aucune image n'est trouvée
-
-
-# ! FAIRE TELECHARGER CHAQUE IMAGE DES SETS ET LES METTRE DANS UN DOSSIER IMAGES
+# Image par défaut si aucune image n'est trouvée
+IMG_DEFAULT = "./assets/LEGO_logo.png"
+# Télécharger les images des sets ou conserver les URL
+DOWNLOAD_IMG = None
+CATEGORIES = ['Normal', 'Book'] # Catégories de sets à afficher
 
 
 ###########################################################
@@ -80,18 +82,26 @@ def get_all_set_from_api(theme: str) -> list[dict]:
     liste_sets = []
     nb_sets = 0
 
-    # obtenir le nombre de sets
-    liste_themes = json.load(
-        brickse.lego.get_theme_years(theme=theme))['years']
-    for theme_item in liste_themes:
-        if theme_item['theme'] == theme:
-            nb_sets = theme_item['setCount']
+    for key_api in API_KEY:
+        brickse.init(key_api)
+        try:
+            # obtenir le nombre de sets
+            liste_themes = json.load(
+                brickse.lego.get_theme_years(theme=theme))['years']
+            for theme_item in liste_themes:
+                if theme_item['theme'] == theme:
+                    nb_sets = theme_item['setCount']
 
-    # obtenir les sets
-    for i in range(1, nb_sets // 500 + 3):
-        set_500 = json.loads(brickse.lego.get_sets(
-            theme=theme, page_size=500, page=i).read())['sets']
-        liste_sets.extend(set_500)
+            # obtenir les sets
+            for i in range(1, nb_sets // 500 + 3):
+                set_500 = json.loads(brickse.lego.get_sets(
+                    theme=theme, page_size=500, page=i).read())['sets']
+                liste_sets.extend(set_500)
+        except KeyError:
+            if key_api == API_KEY[-1]:
+                print("Nombre de requêtes dépassé pour toutes les clés API")
+                return []
+            print("Nombre de requêtes dépassé, changement de clé API")
 
     return liste_sets
 
@@ -142,9 +152,12 @@ def get_themes_name(yearfrom: int = None, yearto: int = None, search: str = None
     - list[dict]: Liste des thèmes avec l'image d'un set aléatoire.
     """
     # Charger les données
-    themes = utils.load_themes_from_file(os.path.join(os.path.dirname(__file__), 'data/themes.json'))
+    themes = utils.load_themes_from_file(os.path.join(
+        os.path.dirname(__file__), 'data/themes.json'))
 
-    sets = utils.load_sets_from_file(os.path.join(os.path.dirname(__file__), 'data/sets.json'))
+    sets = utils.load_sets_from_file(os.path.join(
+        os.path.dirname(__file__), 'data/sets.json'))
+    sets = [s for s in sets if s['category'] in CATEGORIES]
 
     # Définir les bornes par défaut
     yearfrom = yearfrom or 1949
@@ -177,16 +190,18 @@ def get_themes_name(yearfrom: int = None, yearto: int = None, search: str = None
 
         # Choisir une image aléatoire ou utiliser l'image par défaut
         if theme_sets:
-            random_image = random.choice(
-                [s['image']['imageURL'] for s in theme_sets]
-            )
+            random_set = random.choice(theme_sets)
+            img = random_set['image']['imageURL']
+            if DOWNLOAD_IMG:
+                img = utils.download_images_to_file(
+                    [random_set['image']['imageURL']], random_set['number'])
         else:
-            random_image = IMG_DEFAULT
+            img = IMG_DEFAULT
 
         # Ajouter les informations du thème
         final_list.append({
             "name": theme['theme'],
-            "image": random_image,
+            "image": img,
             "totalSets": theme['setCount'],
             "yearFrom": theme['yearFrom'],
             "yearTo": theme['yearTo'],
@@ -213,13 +228,12 @@ def get_sets(theme: str = None, year: int = None,
     Return:
     - list[dict]: Liste des sets avec le nom, l'image, le prix et la note.
     """
-    categories = ['Normal', 'Book']
     # Charger les données locales
     fichier = 'data/sets.json'
     local_sets = utils.load_sets_from_file(fichier)
 
     # Filtrer les sets normaux
-    sets_normal = [s for s in local_sets if s['category'] in categories]
+    sets_normal = [s for s in local_sets if s['category'] in CATEGORIES]
 
     # Appliquer les filtres sauf si all_sets est True
     if not all_sets:
@@ -253,7 +267,7 @@ def get_sets(theme: str = None, year: int = None,
         local_sets.extend(api_sets)
         # Mettre à jour le fichier local
         utils.save_sets_to_file(local_sets, fichier)
-        sets_normal = [s for s in local_sets if s['category'] in categories]
+        sets_normal = [s for s in local_sets if s['category'] in CATEGORIES]
         sets_normal = [s for s in sets_normal if s['theme']
                        == theme] if theme else sets_normal
         sets_normal = [s for s in sets_normal if search.lower(
@@ -266,11 +280,17 @@ def get_sets(theme: str = None, year: int = None,
     # Construire la liste finale
     result = []
     for lego_set in sets_normal:
-        img = lego_set['image']['imageURL'] if lego_set.get(
-            'image') else IMG_DEFAULT
+        if lego_set.get('image'):
+            if DOWNLOAD_IMG:
+                img = utils.download_images_to_file([lego_set['image']['imageURL']], lego_set['number'])
+            else:
+                img = lego_set['image']['imageURL']
+        else:
+            img = IMG_DEFAULT
+
         price = next(
             (price_info['retailPrice'] for price_info in lego_set.get(
-                'LEGOCom', {}).values() if price_info),
+                'LEGOCom', {}).values() if price_info and price_info.get('retailPrice')),
             None
         )
 
@@ -326,7 +346,8 @@ def get_set_info(set_number: str) -> list[dict]:
             set_info['setID']).read())['additionalImages']
         for dict_img in list_dict_img:
             img.append(dict_img['imageURL'])
-        img = utils.download_images_to_file(img, set_number)
+        if DOWNLOAD_IMG:
+            img = utils.download_images_to_file(img, set_number)
     else:
         img = [IMG_DEFAULT]
 
