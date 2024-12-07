@@ -83,7 +83,7 @@ def get_all_set_from_api(theme: str) -> list[dict]:
     nb_sets = 0
 
     for key_api in API_KEY:
-        brickse.init(key_api)
+        init(key_api)
         try:
             # obtenir le nombre de sets
             liste_themes = json.load(
