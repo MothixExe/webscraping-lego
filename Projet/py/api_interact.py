@@ -83,7 +83,7 @@ def get_all_set_from_api(theme: str) -> list[dict]:
     liste_sets = []
     nb_sets = 0
 
-    for key_api in API_KEY:
+    for key_api in API_KEY.copy():
         init(key_api)
         try:
             # obtenir le nombre de sets
@@ -106,6 +106,7 @@ def get_all_set_from_api(theme: str) -> list[dict]:
                 print("Nombre de requêtes dépassé pour toutes les clés API")
                 return []
             print("Nombre de requêtes dépassé, changement de clé API")
+            API_KEY.remove(key_api)
 
     return liste_sets
 

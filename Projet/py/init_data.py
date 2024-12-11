@@ -76,18 +76,21 @@ def main():
     """
     Initialiser les données
     """
-    for key_api in api_utils.API_KEY:
+    for key_api in api_utils.API_KEY.copy():
         api_utils.init(key_api)
         try:
             # Inilialiser les thèmes
             init_themes()
             # Initialiser les ensembles sur une liste vide
             init_sets()
+            break
         except KeyError:
             print("Nombre de requêtes dépassé, changement de clé API")
             if key_api == api_utils.API_KEY[-1]:
                 print("Nombre de requêtes dépassé pour toutes les clés API")
                 return
+            else:
+                api_utils.API_KEY.remove(key_api)
 
     choix = input("Faire fonctionner le site avec les images en local ? ([o]/n) : ")
     while choix.lower() not in ['o', 'n', '']:

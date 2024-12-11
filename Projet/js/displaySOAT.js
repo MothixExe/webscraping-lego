@@ -56,11 +56,18 @@ async function displaySetDetails() {
         set.image.forEach((imageUrl, index) => {
             const imageDiv = document.createElement('div');
             imageDiv.className = 'w-full h-full';
+
+            const link = document.createElement('a');
+            link.href = imageUrl;
+            link.setAttribute('data-lightbox', 'image-set');
+
             const img = document.createElement('img');
             img.className = 'object-cover w-full h-full rounded-lg';
             img.src = imageUrl;
             img.alt = `Image ${index + 1}`;
-            imageDiv.appendChild(img);
+
+            link.appendChild(img);
+            imageDiv.appendChild(link);
 
             // Si il y a un nombre impair d'images, la première image prendra 2 colonnes
             if (index === 0 && numImages % numCols !== 0) {
