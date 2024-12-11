@@ -13,6 +13,7 @@ from rapidfuzz import process, fuzz
 
 import brickse
 import utils
+import init_data
 
 # Clé d'API pour accéder à Brickset
 # (limited to 100 requests per day)
@@ -24,7 +25,7 @@ API_KEY = ['3-7B1M-6WHA-JxOTZ', '3-8MeG-xlFh-ZlQgO']
 IMG_DEFAULT = "./assets/LEGO_logo.png"
 # Télécharger les images des sets ou conserver les URL
 DOWNLOAD_IMG = None
-CATEGORIES = ['Normal', 'Book'] # Catégories de sets à afficher
+CATEGORIES = ['Normal', 'Book', 'Gear'] # Catégories de sets à afficher
 
 
 ###########################################################
@@ -86,17 +87,20 @@ def get_all_set_from_api(theme: str) -> list[dict]:
         init(key_api)
         try:
             # obtenir le nombre de sets
-            liste_themes = json.load(
-                brickse.lego.get_theme_years(theme=theme))['years']
+            filename = 'themes.json'
+            path_script = os.path.dirname(__file__)
+            path_file = os.path.join(path_script, init_data.FICHIER)
+            path_data = os.path.join(path_file, filename)
+            liste_themes = utils.load_sets_from_file(path_data)
             for theme_item in liste_themes:
                 if theme_item['theme'] == theme:
                     nb_sets = theme_item['setCount']
 
-            # obtenir les sets
-            for i in range(1, nb_sets // 500 + 3):
+            for i in range(1, nb_sets // 500 + 2):
                 set_500 = json.loads(brickse.lego.get_sets(
                     theme=theme, page_size=500, page=i).read())['sets']
                 liste_sets.extend(set_500)
+            return liste_sets
         except KeyError:
             if key_api == API_KEY[-1]:
                 print("Nombre de requêtes dépassé pour toutes les clés API")

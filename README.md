@@ -3,6 +3,18 @@
 ## Description
 Ce projet permet de collecter des données sur les ensembles Lego en utilisant le web scraping et des appels API. Il inclut des scripts pour sauvegarder et charger les données localement, ainsi qu'une interface web pour interagir avec les données.
 
+## Instructions pour faire fonctionner le programme
+
+### Prérequis
+- Python 3.2 >
+- Flask
+- Brikset
+- Une connexion internet si vous n'avez jamais lancer le programme
+
+Pour installer les modules nécessaires, exécutez le fichier `install_requirements.py` dans le dossier `py`.
+
+Pour lancer le programme, exécutez le fichier `start.py` dans le dossier `py`.
+
 ## Structure des fichiers
 
 ### Fichiers Python
@@ -64,10 +76,3 @@ Ce projet permet de collecter des données sur les ensembles Lego en utilisant l
 - `js/callAPI.js` : Contient les fonctions pour interagir avec l'API et récupérer les données.
 - `js/menu.js` : Gère le menu mobile de l'interface web.
 - `js/displaySetsByTheme.js` : Affiche les sets Lego filtrés par thème sur la page.
-
-## Instructions pour faire fonctionner le programme
-
-### Prérequis
-- Python 3.x
-- Flask
-- Une connexion internet si vous n'avez jamais lancer le programme
