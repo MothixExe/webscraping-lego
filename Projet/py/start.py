@@ -6,13 +6,13 @@ import os
 import webbrowser
 
 import install_requirements as ir
-import app_main as am
-import init_data as data
+
 
 if __name__ == '__main__':
     # Installer les modules requis
     ir.main()
 
+    import init_data as data
     # Initialiser les données
     data.main()
 
@@ -22,4 +22,5 @@ if __name__ == '__main__':
 
     # Démarrer le serveur Flask
     # os.system('flask --app app_main run')
+    import app_main as am
     am.start_app()

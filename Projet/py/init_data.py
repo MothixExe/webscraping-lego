@@ -12,6 +12,7 @@ import api_interact as api_utils
 
 FICHIER = './data/'
 
+
 def save_json_to_file(data, path_data):
     """
     Enregistrer les données dans un fichier

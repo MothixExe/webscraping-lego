@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 """
+Ce code concerne l'utilisation de l'API de https://brickset.com/
+Il est utilisé pour obtenir la liste des thèmes et la liste des ensembles pour un thème donné.
+
 Toutes les fonctions pour interagir avec l'API Brickse et répondre aux 
 requêtes du serveur d'applications Flask.
-
-Fait par Mothix et Matis
 """
 import os
 import json
@@ -25,7 +26,7 @@ API_KEY = ['3-7B1M-6WHA-JxOTZ', '3-8MeG-xlFh-ZlQgO']
 IMG_DEFAULT = "./assets/LEGO_logo.png"
 # Télécharger les images des sets ou conserver les URL
 DOWNLOAD_IMG = None
-CATEGORIES = ['Normal', 'Book', 'Gear'] # Catégories de sets à afficher
+CATEGORIES = ['Normal', 'Book', 'Gear']  # Catégories de sets à afficher
 
 
 ###########################################################

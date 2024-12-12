@@ -22,12 +22,12 @@ async function displaySets() {
                 const setElement = document.createElement('a');
                 setElement.href = `./SOAT.html?id=${encodeURIComponent(set.number)}`;
                 setElement.className = "bg-red-500 rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-102 cursor-pointer";
-
+            
                 setElement.innerHTML = `
                     <div class="overflow-hidden">
                         <img src="${set.image}" alt="${set.name}" class="w-full h-48 object-cover transition-transform duration-300 hover:scale-110">
                     </div>
-                    <div class="p-4 bg-red-500 border-t-4 border-black">
+                    <div class="p-4 bg-red-500 border-t-4 border-black flex flex-col justify-center items-center">
                         <h2 class="text-xl font-bold text-white title-card">${set.name}</h2>
                     </div>
                 `;
@@ -35,7 +35,9 @@ async function displaySets() {
                 console.log("Element ajouté : ", set);
                 console.log("Nomber of sets: ", sets.length);
             });
+            
             titre.innerHTML = `Sets LEGO correspondant à "${search}" - ${sets.length} sets`;
+            
         }
     } else {
         // Sinon, afficher tous les sets
@@ -43,8 +45,8 @@ async function displaySets() {
 
         if (sets.length === 0) {
             setsList.innerHTML = '<h1 class="col-span-4 text-center text-3xl w-full font-bold text-red-500 mt-5">Aucun set LEGO n\'a été trouvé</h1>';
-            titre.innerHTML = `Aucun set LEGO n'a été trouvé`;
-            soustitre.innerHTML = `Essayez d'explorer les thèmes pour remplir la base de données en cliquant <a href="./theme.html" class="text-blue-500 hover:underline">ici</a>`;
+            titre.innerHTML = `Aucun set LEGO n'a été trouvé.`;
+            soustitre.innerHTML = `Essayez d'explorer les thèmes pour remplir les fichiers de données en cliquant <a href="./theme.html" class="text-blue-500 hover:underline">ici</a>`;
         } else {
             sets.forEach(set => {
                 const setElement = document.createElement('a');

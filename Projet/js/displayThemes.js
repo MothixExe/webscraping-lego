@@ -31,25 +31,27 @@ async function displayThemes() {
             themes.forEach(theme => {
                 const themeElement = document.createElement('a');
                 themeElement.href = `./sets.html?theme=${encodeURIComponent(theme.name)}`;
-                themeElement.className = "theme-element bg-white rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-102 cursor-pointer flex flex-col";
-
+                themeElement.className = "theme-element bg-red-500 rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-102 cursor-pointer flex flex-col";
+            
                 themeElement.innerHTML = `
-                <div class="theme-item overflow-hidden flex-1">
-                    <div class="overflow-hidden flex-1">
-                        <img src="${theme.image}" alt="${theme.name}" class="theme-name w-full h-48 object-cover transition-transform duration-300 hover:scale-110">
-                    </div>
-                    <div class="p-4 bg-red-500 border-t-4 border-black">
-                        <h2 class="theme-name text-xl font-bold text-white title-card">${theme.name}</h2>
-                        <div class="flex justify-between items-center">
-                            <p class="theme-year text-xl font-bold text-yellow-300 bg-black px-3 py-1 rounded-lg shadow-lg">De ${theme.yearFrom} à ${theme.yearTo}</p>
-                            <p class="text-xl font-bold text-yellow-300 bg-black px-3 py-1 rounded-lg shadow-lg">${theme.totalSets} sets</p>
+                    <div class="flex flex-col h-full">
+                        <div class="overflow-hidden flex-shrink-0">
+                            <img src="${theme.image}" alt="${theme.name}" class="w-full h-48 object-cover transition-transform duration-300 hover:scale-110">
+                        </div>
+                        <div class="flex flex-col justify-between flex-grow p-4 bg-red-500 border-t-4 border-black">
+                            <h2 class="text-xl font-bold text-white">${theme.name}</h2>
+                            <div class="flex justify-between items-center mt-2">
+                                <p class="text-xl font-bold text-yellow-300 bg-black px-3 py-1 rounded-lg shadow-lg">De ${theme.yearFrom} à ${theme.yearTo}</p>
+                                <p class="text-xl font-bold text-yellow-300 bg-black px-3 py-1 rounded-lg shadow-lg">${theme.totalSets} sets</p>
+                            </div>
                         </div>
                     </div>
-                </div>
                 `;
-
+            
                 themesList.appendChild(themeElement);
             });
+            
+            
         }
     } else {
         // Sinon, afficher tous les thèmes
@@ -90,23 +92,23 @@ async function displayThemes() {
         themes.forEach(theme => {
             const themeElement = document.createElement('a');
             themeElement.href = `./sets.html?theme=${encodeURIComponent(theme.name)}`;
-            themeElement.className = "theme-element bg-white rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-102 cursor-pointer flex flex-col";
-
+            themeElement.className = "theme-element bg-red-500 rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-102 cursor-pointer flex flex-col";
+        
             themeElement.innerHTML = `
-            <div class="theme-item overflow-hidden flex-1">
-                <div class="overflow-hidden flex-1">
-                    <img src="${theme.image}" alt="${theme.name}" class="theme-name w-full h-48 object-cover transition-transform duration-300 hover:scale-110">
-                </div>
-                <div class="p-4 bg-red-500 border-t-4 border-black">
-                    <h2 class="theme-name text-xl font-bold text-white title-card">${theme.name}</h2>
-                    <div class="flex justify-between items-center">
-                        <p class="theme-year text-xl font-bold text-yellow-300 bg-black px-3 py-1 rounded-lg shadow-lg">De ${theme.yearFrom} à ${theme.yearTo}</p>
-                        <p class="text-xl font-bold text-yellow-300 bg-black px-3 py-1 rounded-lg shadow-lg">${theme.totalSets} sets</p>
+                <div class="flex flex-col h-full">
+                    <div class="overflow-hidden flex-shrink-0">
+                        <img src="${theme.image}" alt="${theme.name}" class="w-full h-48 object-cover transition-transform duration-300 hover:scale-110">
+                    </div>
+                    <div class="flex flex-col justify-between flex-grow p-4 bg-red-500 border-t-4 border-black">
+                        <h2 class="text-xl font-bold text-white">${theme.name}</h2>
+                        <div class="flex justify-between items-center mt-2">
+                            <p class="text-xl font-bold text-yellow-300 bg-black px-3 py-1 rounded-lg shadow-lg">De ${theme.yearFrom} à ${theme.yearTo}</p>
+                            <p class="text-xl font-bold text-yellow-300 bg-black px-3 py-1 rounded-lg shadow-lg">${theme.totalSets} sets</p>
+                        </div>
                     </div>
                 </div>
-            </div>
             `;
-
+        
             themesList.appendChild(themeElement);
         });
     }

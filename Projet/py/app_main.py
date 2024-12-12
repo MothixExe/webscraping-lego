@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-Ce code concerne l'utilisation de l'API de https://brickset.com/
-Il est utilisé pour obtenir la liste des thèmes et la liste des ensembles pour un thème donné.
-
 Ce module est destiné à exécuter le serveur Flask et à gérer les requêtes de l'application.
 """
 from flask import Flask, request
